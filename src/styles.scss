@@ -1,0 +1,60 @@
+body {
+    // background-color: #f5f5f5;
+    background-color: #f6f5f9;
+    font-size: 14px;
+}
+
+html, body {
+    height: 100%;
+}
+
+.btn-right {
+    text-align: right;
+
+    .btn {
+        margin: auto auto 10px 10px;
+
+    }
+}
+
+.btn-icone {
+    cursor: pointer;
+}
+
+.btn-black {
+    background-color: #181824;
+}
+
+.btn-info {
+    background-color: #1dc9b7;
+    border-color: #1dc9b7;
+}
+
+.table-custom {
+    th {
+        color: #434349;
+    }
+}
+
+.color-acoes {
+    color: #434349;
+
+    button {
+        &:hover {
+            color: #3d94fb;
+            background: #f0f3ff
+        }
+    }
+
+}
+
+.title-card {
+    color: #434349;
+    font-size: 1.3em;
+    font-weight: 800;
+    background-color: #ffff;
+}
+
+h5 {
+    color: #434349;
+}
