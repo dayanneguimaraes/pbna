@@ -8,22 +8,23 @@ import { ExtratoComponent } from './componentes/extrato/extrato.component';
 import { SaqueComponent } from './componentes/saque/saque.component';
 import { TransferenciaComponent } from './componentes/transferencia/transferencia.component';
 import { PainelListaComponent } from './paginas/lista/painel-lista.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 @NgModule({
-  imports: [
-    PainelRoutingModule,
-    CommonModule,
-    AppShareModule,
-    ReactiveFormsModule,
-    FormsModule,
-  ],
-  declarations: [
-   DepositoComponent,
-   ExtratoComponent,
-   SaqueComponent,
-   TransferenciaComponent,
-   PainelListaComponent
-  ]
+    imports: [
+        PainelRoutingModule,
+        CommonModule,
+        AppShareModule,
+        FormsModule,
+        NgxMaskModule.forRoot()
+    ],
+    declarations: [
+        DepositoComponent,
+        ExtratoComponent,
+        SaqueComponent,
+        TransferenciaComponent,
+        PainelListaComponent
+    ]
 })
 export class PainelModule { }

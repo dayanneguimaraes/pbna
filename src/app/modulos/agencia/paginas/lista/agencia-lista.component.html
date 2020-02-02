@@ -18,15 +18,16 @@
                 <th class="text-center" width="10%">Ações</th>
             </thead>
             <tbody>
-                <tr>
+                <tr *ngFor="let agencia of agencias">
                     <td>
+                        {{agencia.nome}}
                     </td>
                     <td class="text-center color-acoes">
                         <button class="btn">
-                            <i class="fa fa-edit  btn-icone" title="Editar" (click)="editar('agencia')"></i>
+                            <i class="fa fa-edit  btn-icone" title="Editar" (click)="editar(agencia)"></i>
                         </button>
                         <button class="btn">
-                            <i class="fa fa-trash btn-icone" title="Excluir" (click)="excluir('agencia')"></i>
+                            <i class="fa fa-trash btn-icone" title="Excluir" (click)="excluir(agencia)"></i>
                         </button>
                     </td>
                 </tr>

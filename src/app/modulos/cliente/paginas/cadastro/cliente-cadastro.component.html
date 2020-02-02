@@ -4,23 +4,23 @@
         Clientes
     </div>
   <div class="card-body">
-      <form>
+      <!-- <form> -->
           <div class="form-group col-md-4">
               <label for="nome">Nome</label>
               <input type="nome" class="form-control" id="nome" aria-describedby="nomeHelp"
-                  placeholder="Nome">
+                  placeholder="Nome"  [(ngModel)]="cliente.nome">
           </div>
           <div class="form-group col-md-4">
               <label for="cpf">CPF</label>
-              <input type="cpf" class="form-control" id="cpf" placeholder="cpf">
+              <input type="cpf" class="form-control" id="cpf" placeholder="cpf"   [(ngModel)]="cliente.cpf" mask="000.000.000-00">
           </div>
           <div class="form-group col-md-4">
             <label for="telefone">Telefone</label>
-            <input type="telefone" class="form-control" id="telefone" placeholder="telefone">
+            <input type="telefone" class="form-control" id="telefone" placeholder="telefone"  [(ngModel)]="cliente.telefone" mask="(00) 00000 0000">
           </div>
           <div class="form-group col-md-4">
               <label for="endereco">Endereço</label>
-              <input type="endereco" class="form-control" id="endereco" placeholder="endereco">
+              <input type="endereco" class="form-control" id="endereco" placeholder="endereco"  [(ngModel)]="cliente.endereco">
           </div>
 
           <h5 class="mt-5">Dados da Conta</h5>
@@ -56,15 +56,15 @@
                 <i class="fas fa-arrow-left"></i>
                 Voltar
             </button>
-            <button type="button" class="btn btn-outline-secondary">
+            <button type="button" class="btn btn-outline-secondary" (click)="limpar()">
                 <i class="fa fa-trash"></i>
                 Limpar
             </button>
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" (click)="salvar()">
                 <i class="fa fa-save"></i>
                 Salvar
             </button>
         </div>
-      </form>
+      <!-- </form> -->
   </div>
 </div>

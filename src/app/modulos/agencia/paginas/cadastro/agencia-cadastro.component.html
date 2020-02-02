@@ -4,33 +4,33 @@
         Agência
     </div>
     <div class="card-body">
-        <form [formGroup]="formAgencia">
+        <!-- <form> -->
             <div class="form-group col-md-4">
                 <label for="nome">Nome</label>
-                <input type="nome" class="form-control" id="nome" aria-describedby="nomeHelp" placeholder="Nome">
+                <input type="nome" class="form-control" id="nome" aria-describedby="nomeHelp" placeholder="Nome"  [(ngModel)]="agencia.nome">
             </div>
             <div class="form-group col-md-4">
                 <label for="apelido">Apelido</label>
-                <input type="apelido" class="form-control" id="apelido" placeholder="Apelido">
+                <input type="apelido" class="form-control" id="apelido" placeholder="Apelido"  [(ngModel)]="agencia.apelido">
             </div>
             <div class="form-group col-md-4">
                 <label for="endereco">Endereço</label>
-                <input type="endereco" class="form-control" id="endereco" placeholder="Endereço">
+                <input type="endereco" class="form-control" id="endereco" placeholder="Endereço"  [(ngModel)]="agencia.endereco">
             </div>
             <div class="btn-right">
                 <button type="button" class="btn btn-outline-secondary" [routerLink]="['/agencia']">
                     <i class="fas fa-arrow-left"></i>
                     Voltar
                 </button>
-                <button type="button" class="btn btn-outline-secondary">
+                <button type="button" class="btn btn-outline-secondary" (click)="limpar()">
                     <i class="fa fa-trash"></i>
                     Limpar
                 </button>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" (click)="salvar()">
                     <i class="fa fa-save"></i>
                     Salvar
                 </button>
             </div>
-        </form>
+        <!-- </form> -->
     </div>
 </div>

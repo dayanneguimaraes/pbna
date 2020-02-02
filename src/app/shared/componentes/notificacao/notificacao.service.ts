@@ -3,24 +3,19 @@ import { Router, NavigationStart } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
  
-import { Notificacao, NotificacaoType } from './notificacao';
+import { Notificacao } from './notificacao';
  
 @Injectable({
     providedIn: 'root'
 })
 export class NotificacaoService {
     private subject = new Subject<Notificacao>();
-    private manterTrocarRota = false;
  
     constructor(private router: Router) {
         
         router.events.subscribe(event => {
             if (event instanceof NavigationStart) {
-                if (this.manterTrocarRota) {
-                    this.manterTrocarRota = false;
-                } else {
                     this.clear();
-                }
             }
         });
     }
@@ -29,25 +24,12 @@ export class NotificacaoService {
         return this.subject.asObservable();
     }
  
-    success(message: string, manterTrocarRota: boolean = false) {
-        this.mensagem(NotificacaoType.Success, message, manterTrocarRota);
+    success(message: string) {
+        this.mensagem(message);
     }
  
-    error(message: string | Array<string>, manterTrocarRota: boolean = false) {
-        this.mensagem(NotificacaoType.Error, message, manterTrocarRota);
-    }
- 
-    info(message: string, manterTrocarRota: boolean = false) {
-        this.mensagem(NotificacaoType.Info, message, manterTrocarRota);
-    }
- 
-    warn(message: string, manterTrocarRota: boolean = false) {
-        this.mensagem(NotificacaoType.Warning, message, manterTrocarRota);
-    }
- 
-    mensagem(type: NotificacaoType, message: string | Array<string>, manterTrocarRota: boolean) {
-        this.manterTrocarRota = manterTrocarRota;
-        this.subject.next(<Notificacao>{ type: type, message: message , isLista: message instanceof Array});
+    mensagem(message: string | Array<string>) {
+        this.subject.next(<Notificacao>{ message: message});
         document.documentElement.scrollTop = 0;
     }
  

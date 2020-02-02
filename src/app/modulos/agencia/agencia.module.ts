@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppShareModule } from 'src/app/app-share.module';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AgenciaRoutingModule } from './agencia-routing.module';
 import { AgenciaListaComponent } from './paginas/lista/agencia-lista.component';
 import { AgenciaCadastroComponent } from './paginas/cadastro/agencia-cadastro.component';
@@ -11,7 +11,6 @@ import { AgenciaCadastroComponent } from './paginas/cadastro/agencia-cadastro.co
     AgenciaRoutingModule,
     CommonModule,
     AppShareModule,
-    ReactiveFormsModule,
     FormsModule,
   ],
   declarations: [

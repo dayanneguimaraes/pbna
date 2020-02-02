@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AgenciaCadastro } from './agencia-cadastro';
 import { AgenciaCadastroService } from './agencia-cadastro.service';
-import { Agencia } from './agencia';
 import { NotificacaoService } from 'src/app/shared/componentes/notificacao/notificacao.service';
+import { Mensagem } from 'src/app/shared/constantes/mensagem.constant';
 
 @Component({
     selector: 'app-agencia-cadastro',
@@ -10,35 +9,39 @@ import { NotificacaoService } from 'src/app/shared/componentes/notificacao/notif
     styleUrls: ['./agencia-cadastro.component.scss'],
     providers: [AgenciaCadastroService]
 })
-export class AgenciaCadastroComponent extends AgenciaCadastro implements OnInit {
+export class AgenciaCadastroComponent implements OnInit {
 
-    agencia: Agencia;
+    agencia: any = {};
 
     constructor(private agenciaCadastroService: AgenciaCadastroService,
         private notificacaoService: NotificacaoService) {
-        super();
     }
 
     ngOnInit() {
+        // this.obterAgencia();
     }
 
     obterAgencia(): void {
         const codigo: number = 0;
-        this.agenciaCadastroService.obterAgencia(codigo).subscribe((response: Agencia) => {
+        this.agenciaCadastroService.obterAgencia(codigo).subscribe((response: any) => {
             this.agencia = response;
         })
     }
 
     salvar(): void {
-        this.agenciaCadastroService.incluir(this.agencia).subscribe((response: Agencia) => {
-            this.notificacaoService.success('Agência incluida com sucesso');
+        this.agenciaCadastroService.incluir(this.agencia).subscribe((response: any) => {
+            this.notificacaoService.success(Mensagem.ACAO_SUCESSO);('Agência incluida com sucesso');
         });
     }
 
     alterar(): void {
-        this.agenciaCadastroService.alterar(this.agencia).subscribe((response: Agencia) => {
-            this.notificacaoService.success('Agência incluida com sucesso');
+        this.agenciaCadastroService.alterar(this.agencia).subscribe((response: any) => {
+            this.notificacaoService.success(Mensagem.ACAO_SUCESSO);('Agência incluida com sucesso');
         });
+    }
+
+    limpar(): void {
+        this.agencia = {};
     }
 
 }

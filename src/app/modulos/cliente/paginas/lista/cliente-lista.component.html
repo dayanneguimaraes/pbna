@@ -15,18 +15,25 @@
                 <th>
                     Nome
                 </th>
+                <th>
+                    CPF
+                </th>
                 <th class="text-center" width="10%">Ações</th>
             </thead>
             <tbody>
-                <tr>
+                <tr *ngFor="let cliente of clientes">
                     <td>
+                        {{cliente.nome}}
+                    </td>
+                    <td>
+                        {{cliente.cpf}}
                     </td>
                     <td class="text-center">
                         <button class="btn">
-                            <i class="fa fa-edit  btn-icone" title="Editar" (click)="editar('agencia')"></i>
+                            <i class="fa fa-edit  btn-icone" title="Editar" (click)="editar(cliente)"></i>
                         </button>
                         <button class="btn">
-                            <i class="fa fa-trash btn-icone" title="Excluir" (click)="excluir('agencia')"></i>
+                            <i class="fa fa-trash btn-icone" title="Excluir" (click)="excluir(cliente)"></i>
                         </button>
                     </td>
                 </tr>

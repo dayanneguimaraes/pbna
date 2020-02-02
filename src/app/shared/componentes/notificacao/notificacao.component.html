@@ -1,19 +1,6 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12 p-0">
-            <div *ngFor="let notificacao of notificacoes" class="{{cssClassMensagem(notificacao)}} notificacao alert-dismissible">
-                <i class="{{notificacaoIconeClass(notificacao)}}"></i>
-                <span *ngIf="notificacao.isLista">
-                    <p *ngFor="let message of notificacao.message">
-                        {{message}}
-                    </p>
-                </span>
-                <p *ngIf="!notificacao.isLista">{{notificacao.message}}</p>
-                <button type="button" class="close" aria-label="Close" (click)="removeMensagem(notificacao)">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        </div>
-      
-    </div>
+<div class="alert alert-success alert-dismissible fade show notificacao" role="alert" *ngFor="let notificacao of notificacoes">
+    <span >{{notificacao.message}}</span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="removeNotificacao()">
+      <span aria-hidden="true">&times;</span>
+    </button>
 </div>

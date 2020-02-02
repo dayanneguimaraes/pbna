@@ -14,4 +14,8 @@ export class AgenciaListaService {
         return this.http.delete(this.URL + 'agencia/' + codigo);
     }
 
+    obterAgencias(): Observable<any> {
+        return this.http.get(this.URL + 'agencias');
+    }
+
 }

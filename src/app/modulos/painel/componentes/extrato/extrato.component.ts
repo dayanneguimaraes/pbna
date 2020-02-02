@@ -1,15 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { ExtratoService } from './extrato.service';
 
 @Component({
-  selector: 'app-extrato',
-  templateUrl: './extrato.component.html',
-  styleUrls: ['./extrato.component.scss']
+    selector: 'app-extrato',
+    templateUrl: './extrato.component.html',
+    styleUrls: ['./extrato.component.scss'],
+    providers: [ExtratoService]
 })
 export class ExtratoComponent implements OnInit {
 
-  constructor() { }
+    extrato: any = {};
 
-  ngOnInit() {
-  }
+    constructor(private extratoService: ExtratoService) { }
 
+    ngOnInit() {
+    }
+
+    pesquisar(): void {
+        this.extratoService.obterExtrato().subscribe((response: any) => {
+            this.extrato = response.data;
+        });
+    }
+
+    imprimir(): void {
+
+    }
+    
 }

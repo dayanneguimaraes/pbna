@@ -13,7 +13,7 @@ const routes: Routes = [
         component: ClienteCadastroComponent
     },
     {
-        path: 'edicao',
+        path: 'edicao/:codigoCliente',
         component: ClienteCadastroComponent
     }
 ];

@@ -4,26 +4,26 @@
       Extrato
   </div>
   <div class="card-body">
-      <form>
+      <!-- <form> -->
         <div class="row">
           <div class="form-group col-md-4">
               <label for="agencia">Agência</label>
-              <input type="agencia" class="form-control" id="agencia" aria-describedby="agenciaHelp" placeholder="Agência">
+              <input type="agencia" class="form-control" id="agencia" aria-describedby="agenciaHelp" placeholder="Agência"  [(ngModel)]="extrato.agencia" mask="0*">
           </div>
           <div class="form-group col-md-4">
               <label for="conta">Conta</label>
-              <input type="conta" class="form-control" id="conta" placeholder="Conta">
+              <input type="conta" class="form-control" id="conta" placeholder="Conta"  [(ngModel)]="extrato.conta" mask="0*"> 
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="tipoContaDestino" id="poupanca" value="opcao1">
+            <input class="form-check-input" type="radio" name="tipoContaDestino" id="poupanca" value="opcao1"  [(ngModel)]="extrato.tipoConta">
             <label class="form-check-label" for="poupanca">Poupança</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="tipoContaDestino" id="corrente" value="opcao2">
+            <input class="form-check-input" type="radio" name="tipoContaDestino" id="corrente" value="opcao2"  [(ngModel)]="extrato.tipoConta">
             <label class="form-check-label" for="corrente">Corrente</label>
           </div>
           <div class="mt-4">
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" (click)="pesquisar()">
               <i class="fa fa-search"></i>
               Pesquisar
             </button>
@@ -80,6 +80,6 @@
           Imprimir
         </button>
       </div>
-      </form>
+      <!-- </form> -->
   </div>
 </div>
