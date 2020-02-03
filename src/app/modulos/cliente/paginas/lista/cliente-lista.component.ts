@@ -19,7 +19,7 @@ export class ClienteListaComponent implements OnInit {
         private notificacaoService: NotificacaoService) { }
 
     ngOnInit() {
-        // this.obterClientes();
+        this.obterClientes();
     }
 
     obterClientes(): void {
@@ -29,7 +29,7 @@ export class ClienteListaComponent implements OnInit {
     }
 
     editar(cliente: any): void {
-        this.router.navigate(['/cliente', cliente.codigo]);
+        this.router.navigate(['/cliente/edicao', cliente.codigo]);
     }
 
     excluir(cliente: any): void {

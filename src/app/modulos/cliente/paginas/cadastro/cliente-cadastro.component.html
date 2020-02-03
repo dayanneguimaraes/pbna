@@ -4,7 +4,6 @@
         Clientes
     </div>
   <div class="card-body">
-      <!-- <form> -->
           <div class="form-group col-md-4">
               <label for="nome">Nome</label>
               <input type="nome" class="form-control" id="nome" aria-describedby="nomeHelp"
@@ -60,11 +59,14 @@
                 <i class="fa fa-trash"></i>
                 Limpar
             </button>
-            <button type="submit" class="btn btn-primary" (click)="salvar()">
+            <button type="submit" class="btn btn-primary" (click)="salvar()" *ngIf="!isEdicao">
                 <i class="fa fa-save"></i>
                 Salvar
             </button>
+            <button type="submit" class="btn btn-primary" (click)="alterar()" *ngIf="isEdicao">
+              <i class="fa fa-save"></i>
+              Alterar
+          </button>
         </div>
-      <!-- </form> -->
   </div>
 </div>
