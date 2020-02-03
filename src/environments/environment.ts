@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    urlBackEnd: 'http://localhost:8080/sindec-back-end/'
+    urlBackEnd: 'http://localhost:8080/'
 };
 
 /*
