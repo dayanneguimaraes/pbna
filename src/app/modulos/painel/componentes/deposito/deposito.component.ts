@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DepositoService } from './deposito.service';
 import { NotificacaoService } from 'src/app/shared/componentes/notificacao/notificacao.service';
 import { Mensagem } from 'src/app/shared/constantes/mensagem.constant';
+import { TipoContaEnum } from 'src/app/shared/enums/tipo-conta.enum';
 
 @Component({
     selector: 'app-deposito',
@@ -13,9 +14,13 @@ export class DepositoComponent implements OnInit {
 
     deposito: any = {
         conta: {
-            id: null
+            chavePrimaria: {
+                id: null
+            }
         }
     };
+
+    readonly tipoContaEnum: typeof TipoContaEnum = TipoContaEnum;
 
     constructor(private depositoService: DepositoService,
         private notificacaoService: NotificacaoService) { }
@@ -36,7 +41,9 @@ export class DepositoComponent implements OnInit {
     limpar(): void {
         this.deposito = {
             conta: {
-                id: null
+                chavePrimaria: {
+                    id: null
+                }
             }
         };
     }

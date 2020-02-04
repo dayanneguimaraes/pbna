@@ -7,7 +7,7 @@
     
           <div class="form-group col-md-4">
               <label for="agencia'">Agência</label>
-              <select id="agencia'" class="form-control" [(ngModel)]="cliente.agencia" >
+              <select id="agencia'" class="form-control" [(ngModel)]="cliente.agencia.id" >
                   <option [ngValue]="item.id" *ngFor="let item of agencias">{{item.nome}}</option>
               </select>
           </div>    
@@ -33,26 +33,26 @@
           <hr/>
           <div class="form-group col-md-4" *ngIf="isEdicao">
             <label for="numero">Número</label>
-            <input type="numero" class="form-control" id="numero" placeholder="Número" [(ngModel)]="cliente.conta.id" [readonly]="true" >
+            <input type="numero" class="form-control" id="numero" placeholder="Número" [(ngModel)]="cliente.conta.chavePrimaria.id" [readonly]="true" >
           </div>
           <div class="col-md-4">
               <label for="numero">Tipo de Conta</label>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="poupanca" id="poupanca" [value]="tipoContaEnum.POUPANCA" [(ngModel)]="cliente.conta.tipoConta" >
+                <input class="form-check-input" type="radio" name="poupanca" id="poupanca" [value]="tipoContaEnum.POUPANCA" [(ngModel)]="cliente.conta.chavePrimaria.tipoConta" >
                 <label class="form-check-label" for="poupanca">
                   Poupança
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="corrente" id="corrente" [value]="tipoContaEnum.CORRENTE" [(ngModel)]="cliente.conta.tipoConta">
+                <input class="form-check-input" type="radio" name="corrente" id="corrente" [value]="tipoContaEnum.CORRENTE" [(ngModel)]="cliente.conta.chavePrimaria.tipoConta">
                 <label class="form-check-label" for="corrente">
                   Corrente
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="ambos" id="ambos" [value]="tipoContaEnum.TODOS" [(ngModel)]="cliente.conta.tipoConta">
+                <input class="form-check-input" type="radio" name="ambos" id="ambos" [value]="tipoContaEnum.TODOS" [(ngModel)]="cliente.conta.chavePrimaria.tipoConta">
                 <label class="form-check-label" for="ambos">
-                  Ambos
+                  Poupança/Corrente
                 </label>
               </div>
           </div>

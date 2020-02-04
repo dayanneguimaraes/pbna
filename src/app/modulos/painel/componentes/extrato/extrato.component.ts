@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ExtratoService } from './extrato.service';
+import { TipoContaEnum } from 'src/app/shared/enums/tipo-conta.enum';
 
 @Component({
     selector: 'app-extrato',
@@ -11,9 +12,13 @@ export class ExtratoComponent implements OnInit {
 
     extrato: any = {
         conta: {
-            id: null
+            chavePrimaria: {
+                id: null
+            }
         }
     };
+
+    readonly tipoContaEnum: typeof TipoContaEnum = TipoContaEnum;
 
     constructor(private extratoService: ExtratoService) { }
 

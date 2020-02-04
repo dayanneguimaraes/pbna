@@ -5,49 +5,35 @@
   </div>
   <div class="card-body">
         <div class="row">
-          <!-- <div class="form-group col-md-4">
-              <label for="agenciaOrigem">Agência Origem</label>
-              <input type="agenciaOrigem" class="form-control" id="agenciaOrigem" aria-describedby="agenciaOrigemHelp" 
-                placeholder="Agência Origem"  [(ngModel)]="transferencia.agenciaOrigem" mask="0*">
-          </div> -->
           <div class="form-group col-md-4">
               <label for="'contaOrigem'">Conta Origem</label>
-              <input type="contaOrigem" class="form-control" id="contaOrigem" placeholder="Conta Origem"  [(ngModel)]="transferencia.contaOrigem" mask="0*">
+              <input type="contaOrigem" class="form-control" id="contaOrigem" placeholder="Conta Origem"  [(ngModel)]="transferencia.contaOrigem.chavePrimaria.id" mask="0*">
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="tipoConta" id="poupanca" value="opcao1"  [(ngModel)]="transferencia.tipoContaOrigem">
+            <input class="form-check-input" type="radio" name="tipoConta" id="poupanca" [value]="tipoContaEnum.POUPANCA" [(ngModel)]="transferencia.contaOrigem.chavePrimaria.tipoContaOrigem">
             <label class="form-check-label" for="poupanca">Poupança</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="tipoConta" id="corrente" value="opcao2"  [(ngModel)]="transferencia.tipoContaOrigem">
+            <input class="form-check-input" type="radio" name="tipoConta" id="corrente"  [value]="tipoContaEnum.CORRENTE" [(ngModel)]="transferencia.contaOrigem.chavePrimaria.tipoContaOrigem">
             <label class="form-check-label" for="corrente">Corrente</label>
           </div>
          
       </div>
       <div class="row">
-          <!-- <div class="form-group col-md-4">
-              <label for="agencia">Agência Destino</label>
-              <input type="agencia" class="form-control" id="agencia" aria-describedby="agenciaHelp" placeholder="Agência Destino" 
-               [(ngModel)]="transferencia.agenciaDestino" mask="0*">
-          </div> -->
           <div class="form-group col-md-4">
               <label for="conta">Conta Destino</label>
-              <input type="conta" class="form-control" id="conta" placeholder="Conta Destino"  [(ngModel)]="transferencia.contaDestino" mask="0*" >
+              <input type="conta" class="form-control" id="conta" placeholder="Conta Destino"  [(ngModel)]="transferencia.contaDestino.chavePrimaria.id" mask="0*" >
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="tipoContaDestino" id="poupanca" value="opcao1"  [(ngModel)]="transferencia.tipoContaDestino">
+            <input class="form-check-input" type="radio" name="tipoContaDestino" id="poupanca" [value]="tipoContaEnum.POUPANCA" [(ngModel)]="transferencia.contaDestino.chavePrimaria.tipoContaDestino">
             <label class="form-check-label" for="poupanca">Poupança</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="tipoContaDestino" id="corrente" value="opcao2"  [(ngModel)]="transferencia.tipoContaDestino">
+            <input class="form-check-input" type="radio" name="tipoContaDestino" id="corrente"  [value]="tipoContaEnum.CORRENTE"  [(ngModel)]="transferencia.contaDestino.chavePrimaria.tipoContaDestino">
             <label class="form-check-label" for="corrente">Corrente</label>
           </div>
       </div>
       <div class="row">
-          <div class="form-group col-md-4">
-              <label for="Data">Data</label>
-              <input type="Data" class="form-control" id="Data" placeholder="Data" [(ngModel)]="transferencia.data" mask="00/00/0000">
-          </div>
           <div class="form-group col-md-4">
               <label for="valor">Valor</label>
               <input type="valor" class="form-control" id="valor" placeholder="Valor"  [(ngModel)]="transferencia.valor" prefix="R$ " mask="separator.2" thousandSeparator="," >

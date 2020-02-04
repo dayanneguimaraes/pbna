@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TransferenciaService } from './transferencia.service';
 import { NotificacaoService } from 'src/app/shared/componentes/notificacao/notificacao.service';
 import { Mensagem } from 'src/app/shared/constantes/mensagem.constant';
+import { TipoContaEnum } from 'src/app/shared/enums/tipo-conta.enum';
 
 @Component({
     selector: 'app-transferencia',
@@ -11,7 +12,20 @@ import { Mensagem } from 'src/app/shared/constantes/mensagem.constant';
 })
 export class TransferenciaComponent implements OnInit {
 
-    transferencia: any = {};
+    transferencia: any = {
+        contaOrigem: {
+            chavePrimaria: {
+                id: null
+            }
+        },
+        contaDestino: {
+            chavePrimaria: {
+                id: null
+            }
+        }
+    };
+
+    readonly tipoContaEnum: typeof TipoContaEnum = TipoContaEnum;
 
     constructor(private transferenciaService: TransferenciaService,
         private notificacaoService: NotificacaoService) { }
@@ -20,7 +34,18 @@ export class TransferenciaComponent implements OnInit {
     }
 
     limpar(): void {
-        this.transferencia = {};
+        this.transferencia = {
+            contaOrigem: {
+                chavePrimaria: {
+                    id: null
+                }
+            },
+            contaDestino: {
+                chavePrimaria: {
+                    id: null
+                }
+            }
+        };
     }
 
     salvar(): void {

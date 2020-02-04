@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SaqueService } from './saque.service';
 import { NotificacaoService } from 'src/app/shared/componentes/notificacao/notificacao.service';
 import { Mensagem } from 'src/app/shared/constantes/mensagem.constant';
+import { TipoContaEnum } from 'src/app/shared/enums/tipo-conta.enum';
 
 @Component({
     selector: 'app-saque',
@@ -13,9 +14,13 @@ export class SaqueComponent implements OnInit {
 
     saque: any = {
         conta: {
-            id: null
+            chavePrimaria: {
+                id: null
+            }
         }
     };
+
+    readonly tipoContaEnum: typeof TipoContaEnum = TipoContaEnum;
 
     constructor(private saqueService: SaqueService,
         private notificacaoService: NotificacaoService) { }
@@ -26,7 +31,9 @@ export class SaqueComponent implements OnInit {
     limpar(): void {
         this.saque = {
             conta: {
-                id: null
+                chavePrimaria: {
+                    id: null
+                }
             }
         };
     }
@@ -34,8 +41,9 @@ export class SaqueComponent implements OnInit {
     salvar(): void {
         this.saqueService.incluir(this.saque).subscribe((response: any) => {
             this.notificacaoService.success(Mensagem.ACAO_SUCESSO);
+            this.limpar();
         }, ((erro: any) => {
-            this.notificacaoService.error(erro);
+            this.notificacaoService.error(erro.error);
         }));
     }
 

@@ -17,8 +17,11 @@ export class ClienteCadastroComponent implements OnInit {
 
 	cliente: any = {
 		conta: {
-			id: null
-		}
+            chavePrimaria: null
+        },
+        agencia: {
+            id: null
+        }
 	};
 	routeParams: any;
 	isEdicao: boolean = false;
@@ -51,7 +54,9 @@ export class ClienteCadastroComponent implements OnInit {
 
 	obterCliente(): void {
         this.clienteCadastroService.obterCliente(this.routeParams.codigoCliente).subscribe((response: any) => {
-			this.cliente = response;
+            this.cliente = response;
+            this.cliente.conta.tipoConta = response.conta.tipoConta.codigo;
+            console.log(response);
         })
 	}
 	
@@ -78,8 +83,11 @@ export class ClienteCadastroComponent implements OnInit {
 	limpar(): void {
 		this.cliente = {
 			conta: {
-				id: 0
-			}
+                chavePrimaria: null
+            },
+            agencia: {
+                id: null
+            }
 		};
 	}
 
