@@ -10,8 +10,12 @@ export class ExtratoService {
 
     constructor(private http: HttpClient) { }
 
-    obterExtrato(): Observable<any> {
-        return this.http.get(this.URL + 'extrato');
+    obterExtrato(extrato: any): Observable<any> {
+        return this.http.get(this.URL + 'extrato/' + extrato.id + '/' + extrato.tipoConta);
+    }
+
+    obterValorTotalConta(extrato: any): Observable<any> {
+        return this.http.get(this.URL + '/obter-valor-conta/', extrato);
     }
 
 }

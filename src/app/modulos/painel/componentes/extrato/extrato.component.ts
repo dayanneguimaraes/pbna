@@ -11,12 +11,12 @@ import { TipoContaEnum } from 'src/app/shared/enums/tipo-conta.enum';
 export class ExtratoComponent implements OnInit {
 
     extrato: any = {
-        conta: {
-            chavePrimaria: {
-                id: null
-            }
-        }
+        id: null,
+        tipoConta: null
     };
+
+    extratos: Array<any>;
+    valorTotal: number;
 
     readonly tipoContaEnum: typeof TipoContaEnum = TipoContaEnum;
 
@@ -26,8 +26,17 @@ export class ExtratoComponent implements OnInit {
     }
 
     pesquisar(): void {
-        this.extratoService.obterExtrato().subscribe((response: any) => {
-            this.extrato = response.data;
+        console.log(this.extrato);
+        this.extratoService.obterExtrato(this.extrato).subscribe((response: any) => {
+            this.extratos = response;
+            console.log(this.extrato);
+        });
+
+    }
+
+    obterValorTotalConta(): void {
+        this.extratoService.obterValorTotalConta(this.extrato).subscribe((response: any) => {
+            this.valorTotal = response;
         });
     }
 

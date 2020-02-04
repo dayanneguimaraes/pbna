@@ -17,7 +17,10 @@ export class ClienteCadastroComponent implements OnInit {
 
 	cliente: any = {
 		conta: {
-            chavePrimaria: null
+            chavePrimaria: {
+                id: null,
+                tipoConta: null
+            }
         },
         agencia: {
             id: null
@@ -83,7 +86,10 @@ export class ClienteCadastroComponent implements OnInit {
 	limpar(): void {
 		this.cliente = {
 			conta: {
-                chavePrimaria: null
+                chavePrimaria: {
+                    id: null,
+                    tipoConta: null
+                }
             },
             agencia: {
                 id: null

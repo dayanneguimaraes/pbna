@@ -1,82 +1,89 @@
 <div class="card">
-  <div class="card-header title-card">
-      <i class="fas fa-file-alt"></i>
-      Extrato
-  </div>
-  <div class="card-body">
+    <div class="card-header title-card">
+        <i class="fas fa-file-alt"></i>
+        Extrato
+    </div>
+    <div class="card-body">
         <div class="row">
-          <div class="form-group col-md-4">
-              <label for="conta">Conta</label>
-              <input type="conta" class="form-control" id="conta" placeholder="Conta"  [(ngModel)]="extrato.conta.chavePrimaria.id" mask="0*"> 
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="tipoContaDestino" id="poupanca" [value]="tipoContaEnum.POUPANCA"  [(ngModel)]="extrato.conta.chavePrimaria.tipoConta">
-            <label class="form-check-label" for="poupanca">Poupança</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="tipoContaDestino" id="corrente" [value]="tipoContaEnum.CORRENTE"  [(ngModel)]="extrato.conta.chavePrimaria.tipoConta">
-            <label class="form-check-label" for="corrente">Corrente</label>
-          </div>
-          <div class="mt-4">
-            <button type="submit" class="btn btn-primary" (click)="pesquisar()">
-              <i class="fa fa-search"></i>
-              Pesquisar
+            <div class="form-group col-md-4">
+                <label for="conta">Conta</label>
+                <input type="conta" class="form-control" id="conta" placeholder="Conta" [(ngModel)]="extrato.id"
+                    mask="0*">
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tipoContaDestino" id="poupanca"
+                    [value]="tipoContaEnum.POUPANCA" [(ngModel)]="extrato.tipoConta">
+                <label class="form-check-label" for="poupanca">Poupança</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tipoContaDestino" id="corrente"
+                    [value]="tipoContaEnum.CORRENTE" [(ngModel)]="extrato.tipoConta">
+                <label class="form-check-label" for="corrente">Corrente</label>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary" (click)="pesquisar()">
+                    <i class="fa fa-search"></i>
+                    Pesquisar
+                </button>
+            </div>
+        </div>
+        <div id="extrato">
+            <label for="conta">Conta: </label> {{extrato.id}}
+
+            <table class="table table-hover table-bordered table-custom">
+                <thead>
+                    <th>
+                        Data
+                    </th>
+                    <th>
+                        Lançamento
+                    </th>
+                    <th>
+                        Valor (R$)
+                    </th>
+                    <th>
+                        Saldo (R$)
+                    </th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let extrato of extratos">
+                        <td>
+                            {{extrato.data}}
+                        </td>
+                        <td>
+                            {{extrato.tipoOperacao.nome}}
+                        </td>
+                        <td>
+                            {{extrato.tipoOperacao.valor}}
+                        </td>
+                        <td>
+                            {{extrato.tipoOperacao.saldoConta}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-hover table-bordered table-custom">
+                <tbody>
+                    <tr>
+                        <td class="text-right">
+                            Valor Total
+                        </td>
+                        <td>
+                            {{valorTotal}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-right mt-4">
+            <button type="button" class="btn btn-outline-secondary" [routerLink]="['/operacoes-bancarias']">
+                <i class="fas fa-arrow-left"></i>
+                Voltar
             </button>
-          </div>
-      </div>
-      <div id="extrato">
-        <label for="conta">Conta: </label> {{extrato.conta.id}}
-        
-        <table class="table table-hover table-bordered table-custom" >
-          <thead>
-              <th>
-                  Data
-              </th>
-              <th>
-                Lançamento
-              </th>
-              <th>
-                Valor (R$)
-              </th>
-              <th>
-                Saldo (R$)
-              </th>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>
-                  </td>
-                  <td>
-                  </td>
-                  <td>
-                  </td>
-                  <td>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
-      <table class="table table-hover table-bordered table-custom">
-        <tbody>
-            <tr>
-                <td class="text-right">
-                  Valor Total
-                </td>
-                <td>
-                  0,00
-                </td>
-            </tr>
-        </tbody>
-    </table>
-      </div>
-      <div class="btn-right mt-4">
-        <button type="button" class="btn btn-outline-secondary" [routerLink]="['/operacoes-bancarias']">
-          <i class="fas fa-arrow-left"></i>
-          Voltar
-      </button>
-        <button type="button" class="btn btn-primary" (click)="imprimir()">
-          <i class="fa fa-print"></i>
-          Imprimir
-        </button>
-      </div>
-  </div>
+            <button type="button" class="btn btn-primary" (click)="imprimir()">
+                <i class="fa fa-print"></i>
+                Imprimir
+            </button>
+        </div>
+    </div>
 </div>
