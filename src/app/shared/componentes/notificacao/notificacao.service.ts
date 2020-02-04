@@ -3,7 +3,7 @@ import { Router, NavigationStart } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
  
-import { Notificacao } from './notificacao';
+import { Notificacao, NotificacaoType } from './notificacao';
  
 @Injectable({
     providedIn: 'root'
@@ -25,11 +25,15 @@ export class NotificacaoService {
     }
  
     success(message: string) {
-        this.mensagem(message);
+        this.mensagem(NotificacaoType.Success, message);
+    }
+   
+    error(message: string) {
+        this.mensagem(NotificacaoType.Error, message);
     }
  
-    mensagem(message: string | Array<string>) {
-        this.subject.next(<Notificacao>{ message: message});
+    mensagem(type: NotificacaoType, message: string) {
+        this.subject.next(<Notificacao>{ type: type, message: message});
         document.documentElement.scrollTop = 0;
     }
  

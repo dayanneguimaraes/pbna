@@ -11,7 +11,11 @@ import { Mensagem } from 'src/app/shared/constantes/mensagem.constant';
 })
 export class SaqueComponent implements OnInit {
 
-    saque: any = {};
+    saque: any = {
+        conta: {
+            id: null
+        }
+    };
 
     constructor(private saqueService: SaqueService,
         private notificacaoService: NotificacaoService) { }
@@ -20,13 +24,19 @@ export class SaqueComponent implements OnInit {
     }
 
     limpar(): void {
-        this.saque = {};
+        this.saque = {
+            conta: {
+                id: null
+            }
+        };
     }
 
     salvar(): void {
         this.saqueService.incluir(this.saque).subscribe((response: any) => {
             this.notificacaoService.success(Mensagem.ACAO_SUCESSO);
-        });
+        }, ((erro: any) => {
+            this.notificacaoService.error(erro);
+        }));
     }
 
 }

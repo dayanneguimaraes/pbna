@@ -11,15 +11,19 @@ export class ClienteCadastroService {
     constructor(private http: HttpClient) { }
 
     incluir(cliente: any): Observable<any> {
-        return this.http.post(this.URL + 'Cliente/', cliente);
+        return this.http.post(this.URL + 'cliente/', cliente);
     }
 
     alterar(cliente: any): Observable<any> {
-        return this.http.put(this.URL + 'Cliente/', cliente);
+        return this.http.put(this.URL + 'cliente/', cliente);
     }
 
     obterCliente(codigo: number): Observable<any> {
-        return this.http.get(this.URL + 'Cliente/' + codigo);
+        return this.http.get(this.URL + 'cliente/' + codigo);
+    }
+
+    obterAgencias(): Observable<any> {
+        return this.http.get(this.URL + 'agencia');
     }
 
 }

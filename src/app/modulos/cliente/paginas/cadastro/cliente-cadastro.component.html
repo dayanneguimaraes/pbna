@@ -4,6 +4,13 @@
         Clientes
     </div>
   <div class="card-body">
+    
+          <div class="form-group col-md-4">
+              <label for="agencia'">Agência</label>
+              <select id="agencia'" class="form-control" [(ngModel)]="cliente.agencia" >
+                  <option [ngValue]="item.id" *ngFor="let item of agencias">{{item.nome}}</option>
+              </select>
+          </div>    
           <div class="form-group col-md-4">
               <label for="nome">Nome</label>
               <input type="nome" class="form-control" id="nome" aria-describedby="nomeHelp"
@@ -11,38 +18,39 @@
           </div>
           <div class="form-group col-md-4">
               <label for="cpf">CPF</label>
-              <input type="cpf" class="form-control" id="cpf" placeholder="cpf"   [(ngModel)]="cliente.cpf" mask="000.000.000-00">
+              <input type="cpf" class="form-control" id="cpf" placeholder="cpf" [(ngModel)]="cliente.cpf" mask="000.000.000-00">
           </div>
           <div class="form-group col-md-4">
             <label for="telefone">Telefone</label>
-            <input type="telefone" class="form-control" id="telefone" placeholder="telefone"  [(ngModel)]="cliente.telefone" mask="(00) 00000 0000">
+            <input type="telefone" class="form-control" id="telefone" placeholder="telefone" [(ngModel)]="cliente.telefone" mask="(00) 00000 0000">
           </div>
           <div class="form-group col-md-4">
               <label for="endereco">Endereço</label>
-              <input type="endereco" class="form-control" id="endereco" placeholder="endereco"  [(ngModel)]="cliente.endereco">
+              <input type="endereco" class="form-control" id="endereco" placeholder="endereco" [(ngModel)]="cliente.endereco">
           </div>
 
           <h5 class="mt-5">Dados da Conta</h5>
           <hr/>
-          <div class="form-group col-md-4">
+          <div class="form-group col-md-4" *ngIf="isEdicao">
             <label for="numero">Número</label>
-            <input type="numero" class="form-control" id="numero" placeholder="Número">
+            <input type="numero" class="form-control" id="numero" placeholder="Número" [(ngModel)]="cliente.conta.id" [readonly]="true" >
           </div>
           <div class="col-md-4">
+              <label for="numero">Tipo de Conta</label>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="poupanca" id="poupanca" value="opcao1" checked>
+                <input class="form-check-input" type="radio" name="poupanca" id="poupanca" [value]="tipoContaEnum.POUPANCA" [(ngModel)]="cliente.conta.tipoConta" >
                 <label class="form-check-label" for="poupanca">
                   Poupança
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="corrente" id="corrente" value="ambos">
+                <input class="form-check-input" type="radio" name="corrente" id="corrente" [value]="tipoContaEnum.CORRENTE" [(ngModel)]="cliente.conta.tipoConta">
                 <label class="form-check-label" for="corrente">
                   Corrente
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="ambos" id="ambos" value="ambos">
+                <input class="form-check-input" type="radio" name="ambos" id="ambos" [value]="tipoContaEnum.TODOS" [(ngModel)]="cliente.conta.tipoConta">
                 <label class="form-check-label" for="ambos">
                   Ambos
                 </label>

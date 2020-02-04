@@ -3,7 +3,9 @@ import { ClienteCadastroService } from './cliente-cadastro.service';
 import { NotificacaoService } from 'src/app/shared/componentes/notificacao/notificacao.service';
 import { Mensagem } from 'src/app/shared/constantes/mensagem.constant';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import * as _ from 'lodash';
+import { TipoContaEnum } from 'src/app/shared/enums/tipo-conta.enum';
 
 @Component({
 	selector: 'app-cliente-cadastro',
@@ -13,9 +15,16 @@ import * as _ from 'lodash';
 })
 export class ClienteCadastroComponent implements OnInit {
 
-	cliente: any = {};
+	cliente: any = {
+		conta: {
+			id: null
+		}
+	};
 	routeParams: any;
-    isEdicao: boolean = false;
+	isEdicao: boolean = false;
+	agencias: Array<any>;
+
+	readonly tipoContaEnum: typeof TipoContaEnum = TipoContaEnum;
 
 	constructor(private clienteCadastroService: ClienteCadastroService,
 		private route: ActivatedRoute,
@@ -25,6 +34,8 @@ export class ClienteCadastroComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.obterParamsURL();
+		this.obterAgencias();
 	}
 
 	obterParamsURL(): void {
@@ -39,9 +50,14 @@ export class ClienteCadastroComponent implements OnInit {
     }
 
 	obterCliente(): void {
-        const codigo: number = 0;
-        this.clienteCadastroService.obterCliente(codigo).subscribe((response: any) => {
-            this.cliente = response;
+        this.clienteCadastroService.obterCliente(this.routeParams.codigoCliente).subscribe((response: any) => {
+			this.cliente = response;
+        })
+	}
+	
+	obterAgencias(): void {
+        this.clienteCadastroService.obterAgencias().subscribe((response: any) => {
+            this.agencias = response;
         })
     }
 
@@ -60,7 +76,11 @@ export class ClienteCadastroComponent implements OnInit {
 	}
 
 	limpar(): void {
-		this.cliente = {};
+		this.cliente = {
+			conta: {
+				id: 0
+			}
+		};
 	}
 
 }

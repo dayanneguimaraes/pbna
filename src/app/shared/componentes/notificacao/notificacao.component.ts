@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
  
-import { Notificacao } from './notificacao';
+import { Notificacao, NotificacaoType } from './notificacao';
 import { NotificacaoService } from './notificacao.service';
  
 @Component({
@@ -31,6 +31,14 @@ export class NotificacaoComponent {
  
     removeNotificacao(notificacao: Notificacao) {
         this.notificacoes = this.notificacoes.filter(x => x !== notificacao);
+    }
+
+    obterClassTipoMensagem(notificacao: Notificacao) {
+        if (notificacao.type == NotificacaoType.Success) {
+            return 'alert-success';
+        } else {
+            return 'alert-danger';
+        }
     }
  
 }

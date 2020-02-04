@@ -24,17 +24,18 @@ export class ClienteListaComponent implements OnInit {
 
     obterClientes(): void {
         this.clienteListaService.obterClientes().subscribe((response: any) => {
-            this.clientes = response.data;
+            this.clientes = response;
         })
     }
 
     editar(cliente: any): void {
-        this.router.navigate(['/cliente/edicao', cliente.codigo]);
+        this.router.navigate(['/cliente/edicao', cliente.id]);
     }
 
     excluir(cliente: any): void {
-        this.clienteListaService.excluir(cliente.codigo).subscribe((response: any) => {
-            this.notificacaoService.success(Mensagem.ACAO_SUCESSO);('Excluido com sucesso')
+        this.clienteListaService.excluir(cliente.id).subscribe((response: any) => {
+            this.notificacaoService.success(Mensagem.ACAO_SUCESSO);
+            this.obterClientes();
         })
     }
 

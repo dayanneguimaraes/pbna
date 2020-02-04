@@ -26,7 +26,9 @@ export class TransferenciaComponent implements OnInit {
     salvar(): void {
         this.transferenciaService.incluir(this.transferencia).subscribe((response: any) => {
             this.notificacaoService.success(Mensagem.ACAO_SUCESSO);
-        });
+        }, ((erro: any) => {
+            this.notificacaoService.error(erro);
+        }));
     }
 
 }

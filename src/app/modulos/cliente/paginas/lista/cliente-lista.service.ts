@@ -15,7 +15,7 @@ export class ClienteListaService {
     }
 
     obterClientes(): Observable<any> {
-        return this.http.get(this.URL + 'clientes');
+        return this.http.get(this.URL + 'cliente');
     }
 
 }

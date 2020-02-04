@@ -11,7 +11,11 @@ import { Mensagem } from 'src/app/shared/constantes/mensagem.constant';
 })
 export class DepositoComponent implements OnInit {
 
-    deposito: any = {};
+    deposito: any = {
+        conta: {
+            id: null
+        }
+    };
 
     constructor(private depositoService: DepositoService,
         private notificacaoService: NotificacaoService) { }
@@ -22,11 +26,18 @@ export class DepositoComponent implements OnInit {
     salvar(): void {
         this.depositoService.incluir(this.deposito).subscribe((response: any) => {
             this.notificacaoService.success(Mensagem.ACAO_SUCESSO);
-        });
+            this.limpar();
+        }, ((erro: any) => {
+            this.notificacaoService.error(erro);
+        }));
     }
 
 
     limpar(): void {
-        this.deposito = {};
+        this.deposito = {
+            conta: {
+                id: null
+            }
+        };
     }
 }
