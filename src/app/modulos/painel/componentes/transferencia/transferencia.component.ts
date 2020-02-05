@@ -45,14 +45,16 @@ export class TransferenciaComponent implements OnInit {
                     id: null
                 }
             }
-        };
+        }
+    
     }
 
     salvar(): void {
         this.transferenciaService.incluir(this.transferencia).subscribe((response: any) => {
             this.notificacaoService.success(Mensagem.ACAO_SUCESSO);
+            this.limpar();
         }, ((erro: any) => {
-            this.notificacaoService.error(erro);
+            this.notificacaoService.error(erro.error);
         }));
     }
 

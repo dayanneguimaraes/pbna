@@ -32,12 +32,5 @@ export class ClienteListaComponent implements OnInit {
         this.router.navigate(['/cliente/edicao', cliente.id]);
     }
 
-    excluir(cliente: any): void {
-        this.clienteListaService.excluir(cliente.id).subscribe((response: any) => {
-            this.notificacaoService.success(Mensagem.ACAO_SUCESSO);
-            this.obterClientes();
-        })
-    }
-
 
 }

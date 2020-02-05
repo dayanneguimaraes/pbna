@@ -16,16 +16,12 @@ import { TipoContaEnum } from 'src/app/shared/enums/tipo-conta.enum';
 export class ClienteCadastroComponent implements OnInit {
 
 	cliente: any = {
-		conta: {
-            chavePrimaria: {
-                id: null,
-                tipoConta: null
-            }
-        },
         agencia: {
             id: null
         }
-	};
+    };
+    tipoConta: any = null;
+        
 	routeParams: any;
 	isEdicao: boolean = false;
 	agencias: Array<any>;
@@ -58,9 +54,7 @@ export class ClienteCadastroComponent implements OnInit {
 	obterCliente(): void {
         this.clienteCadastroService.obterCliente(this.routeParams.codigoCliente).subscribe((response: any) => {
             this.cliente = response;
-            this.cliente.conta.tipoConta = response.conta.tipoConta.codigo;
-            console.log(response);
-        })
+        });
 	}
 	
 	obterAgencias(): void {
@@ -70,13 +64,37 @@ export class ClienteCadastroComponent implements OnInit {
     }
 
     salvar(): void {
+        this.criarRequisicao();
         this.clienteCadastroService.incluir(this.cliente).subscribe((response: any) => {
 			this.notificacaoService.success(Mensagem.ACAO_SUCESSO);
 			this.limpar();
         });
     }
 
+    criarRequisicao(): void {
+        let tipos: Array<any> = new Array();
+        if (this.tipoConta == TipoContaEnum.TODOS) {
+            tipos.push(this.addTipos(TipoContaEnum.CORRENTE));
+            tipos.push(this.addTipos(TipoContaEnum.POUPANCA));
+           
+            this.cliente.contas = tipos; 
+        } else {
+            tipos.push(this.addTipos(this.tipoConta));
+            this.cliente.contas = tipos; 
+        }
+    }
+
+    addTipos(tipo: number): any {
+        return {
+            chavePrimaria: {
+                tipoConta: tipo
+            }
+        }
+    }
+
     alterar(): void {
+        let requisicao: any = this.cliente;
+        requisicao.contas = [];
         this.clienteCadastroService.alterar(this.cliente).subscribe((response: any) => {
 			this.notificacaoService.success(Mensagem.ACAO_SUCESSO);
 			this.router.navigate(['/cliente']);
@@ -85,16 +103,11 @@ export class ClienteCadastroComponent implements OnInit {
 
 	limpar(): void {
 		this.cliente = {
-			conta: {
-                chavePrimaria: {
-                    id: null,
-                    tipoConta: null
-                }
-            },
             agencia: {
                 id: null
             }
-		};
+        };
+        this.tipoConta = null;
 	}
 
 }

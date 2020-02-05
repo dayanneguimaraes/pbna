@@ -10,10 +10,6 @@ export class ClienteListaService {
 
     constructor(private http: HttpClient) { }
 
-    excluir(codigo: number): Observable<any> {
-        return this.http.delete(this.URL + 'cliente/' + codigo);
-    }
-
     obterClientes(): Observable<any> {
         return this.http.get(this.URL + 'cliente');
     }

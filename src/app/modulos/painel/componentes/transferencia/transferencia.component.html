@@ -10,11 +10,11 @@
               <input type="contaOrigem" class="form-control" id="contaOrigem" placeholder="Conta Origem"  [(ngModel)]="transferencia.contaOrigem.chavePrimaria.id" mask="0*">
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="tipoConta" id="poupanca" [value]="tipoContaEnum.POUPANCA" [(ngModel)]="transferencia.contaOrigem.chavePrimaria.tipoContaOrigem">
+            <input class="form-check-input" type="radio" name="tipoConta" id="poupanca" [value]="tipoContaEnum.POUPANCA" [(ngModel)]="transferencia.contaOrigem.chavePrimaria.tipoConta">
             <label class="form-check-label" for="poupanca">Poupança</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="tipoConta" id="corrente"  [value]="tipoContaEnum.CORRENTE" [(ngModel)]="transferencia.contaOrigem.chavePrimaria.tipoContaOrigem">
+            <input class="form-check-input" type="radio" name="tipoConta" id="corrente"  [value]="tipoContaEnum.CORRENTE" [(ngModel)]="transferencia.contaOrigem.chavePrimaria.tipoConta">
             <label class="form-check-label" for="corrente">Corrente</label>
           </div>
          
@@ -25,11 +25,11 @@
               <input type="conta" class="form-control" id="conta" placeholder="Conta Destino"  [(ngModel)]="transferencia.contaDestino.chavePrimaria.id" mask="0*" >
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="tipoContaDestino" id="poupanca" [value]="tipoContaEnum.POUPANCA" [(ngModel)]="transferencia.contaDestino.chavePrimaria.tipoContaDestino">
+            <input class="form-check-input" type="radio" name="tipoContaDestino" id="poupanca" [value]="tipoContaEnum.POUPANCA" [(ngModel)]="transferencia.contaDestino.chavePrimaria.tipoConta">
             <label class="form-check-label" for="poupanca">Poupança</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="tipoContaDestino" id="corrente"  [value]="tipoContaEnum.CORRENTE"  [(ngModel)]="transferencia.contaDestino.chavePrimaria.tipoContaDestino">
+            <input class="form-check-input" type="radio" name="tipoContaDestino" id="corrente"  [value]="tipoContaEnum.CORRENTE"  [(ngModel)]="transferencia.contaDestino.chavePrimaria.tipoConta">
             <label class="form-check-label" for="corrente">Corrente</label>
           </div>
       </div>

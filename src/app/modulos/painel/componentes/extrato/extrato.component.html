@@ -48,16 +48,19 @@
                 <tbody>
                     <tr *ngFor="let extrato of extratos">
                         <td>
-                            {{extrato.data}}
+                            {{extrato.data | date: 'dd/MM/yyyy'}}
                         </td>
                         <td>
                             {{extrato.tipoOperacao.nome}}
                         </td>
-                        <td>
-                            {{extrato.tipoOperacao.valor}}
+                        <td [ngClass]="extrato.tipoTransacao.codigo == tipoTransacaoEnum.DEBITO ? 'debito' : 'credito'">
+                            <span *ngIf="extrato.tipoTransacao.codigo == tipoTransacaoEnum.DEBITO">-</span>
+                            <span *ngIf="extrato.tipoTransacao.codigo == tipoTransacaoEnum.CREDITO">+</span>
+
+                            {{ extrato.valor | currency:'R$' }}
                         </td>
-                        <td>
-                            {{extrato.tipoOperacao.saldoConta}}
+                        <td class="coluna-valores">
+                            {{extrato.saldoConta | currency:'R$'}}
                         </td>
                     </tr>
                 </tbody>
@@ -65,11 +68,11 @@
             <table class="table table-hover table-bordered table-custom">
                 <tbody>
                     <tr>
-                        <td class="text-right">
+                        <td class="text-right valor-total">
                             Valor Total
                         </td>
-                        <td>
-                            {{valorTotal}}
+                        <td class="credito" width="23%">
+                            {{valorTotal | currency:'R$'}}
                         </td>
                     </tr>
                 </tbody>

@@ -33,7 +33,7 @@ export class DepositoComponent implements OnInit {
             this.notificacaoService.success(Mensagem.ACAO_SUCESSO);
             this.limpar();
         }, ((erro: any) => {
-            this.notificacaoService.error(erro);
+            this.notificacaoService.error(erro.error);
         }));
     }
 

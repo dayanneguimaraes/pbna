@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExtratoService } from './extrato.service';
 import { TipoContaEnum } from 'src/app/shared/enums/tipo-conta.enum';
-
+import { TipoTransacaoEnum } from 'src/app/shared/enums/tipo-transacao.enum';
 @Component({
     selector: 'app-extrato',
     templateUrl: './extrato.component.html',
@@ -19,6 +19,7 @@ export class ExtratoComponent implements OnInit {
     valorTotal: number;
 
     readonly tipoContaEnum: typeof TipoContaEnum = TipoContaEnum;
+    readonly tipoTransacaoEnum: typeof TipoTransacaoEnum = TipoTransacaoEnum;
 
     constructor(private extratoService: ExtratoService) { }
 
@@ -26,10 +27,9 @@ export class ExtratoComponent implements OnInit {
     }
 
     pesquisar(): void {
-        console.log(this.extrato);
         this.extratoService.obterExtrato(this.extrato).subscribe((response: any) => {
             this.extratos = response;
-            console.log(this.extrato);
+            this.obterValorTotalConta();
         });
 
     }

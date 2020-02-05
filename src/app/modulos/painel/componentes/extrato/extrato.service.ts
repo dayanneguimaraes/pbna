@@ -15,7 +15,7 @@ export class ExtratoService {
     }
 
     obterValorTotalConta(extrato: any): Observable<any> {
-        return this.http.get(this.URL + '/obter-valor-conta/', extrato);
+        return this.http.get(this.URL + 'extrato/obter-valor-conta/' + extrato.id + '/' + extrato.tipoConta);
     }
 
 }
