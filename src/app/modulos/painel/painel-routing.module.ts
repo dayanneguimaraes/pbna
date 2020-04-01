@@ -6,8 +6,6 @@ import { ExtratoComponent } from './componentes/extrato/extrato.component';
 import { SaqueComponent } from './componentes/saque/saque.component';
 import { TransferenciaComponent } from './componentes/transferencia/transferencia.component';
 
-
-
 const routes: Routes = [
     {
         path: '',

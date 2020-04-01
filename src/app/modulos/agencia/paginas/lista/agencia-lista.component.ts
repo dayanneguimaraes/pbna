@@ -14,7 +14,6 @@ export class AgenciaListaComponent implements OnInit {
 
     agencias: Array<any>;
     
-
     constructor(private router: Router,
         private agenciaListaService: AgenciaListaService,
         private notificacaoService: NotificacaoService) { }
