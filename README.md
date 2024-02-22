@@ -10,4 +10,5 @@ npm install -g @angular/cli
 Para rodar o projeto - ng serve
 
 
-
+Para executar nas versões do npm v20
+export NODE_OPTIONS=--openssl-legacy-provider
